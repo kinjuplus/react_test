@@ -257,7 +257,7 @@ export default function EventForm({ applicationList, event}){
           </Row>
           <Row>
             <Col span={12}>     
-                <Form.Item label="Event Date" name="eventDate"
+                <Form.Item label={t('eventDate')} name="eventDate"
                   rules={[
                     {
                       required: true,
