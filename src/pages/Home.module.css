@@ -1,0 +1,23 @@
+.table-row-light {
+    background-color: #ffffff;
+}
+.table-row-dark {
+    background-color: #fbfbfb;
+}
+
+.tableBorder > td {
+    border: 2px solid blue !important;
+    border-radius: 1px !important;
+    
+}
+
+.antTable {
+    background-color: rgb(9,100,100);
+    color: blue;
+}
+
+.spinner-content{
+    padding: 50px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
