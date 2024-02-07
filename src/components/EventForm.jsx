@@ -7,6 +7,7 @@ import EmployeePicker from './EmployeePicker';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { FaEraser, FaSearch  } from "react-icons/fa";
 
 
 export default function EventForm({ applicationList, event}){
@@ -253,7 +254,7 @@ export default function EventForm({ applicationList, event}){
                   },
                ]}
                 >
-                <Input  placeholder="PM" suffix={ <>  <Button type="dashed" onClick={handleClear}><ClearOutlined/></Button> <Button type="link" onClick={()=>{ setIsModalOpen(true)}}><SearchOutlined /></Button> </>}/>   
+                <Input  placeholder="PM" suffix={ <>  <Button type="link" onClick={handleClear}><FaEraser  /></Button> <Button type="link" onClick={()=>{ setIsModalOpen(true)}}><FaSearch /></Button> </>}/>   
                 </Form.Item>
                 <Form.Item name="pmEmpNo" hidden> 
                     <Input type='hidden' />
