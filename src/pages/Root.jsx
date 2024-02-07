@@ -6,6 +6,7 @@ import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined,AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import {  Layout, Menu, theme, ConfigProvider, Switch, Watermark } from 'antd';
 import axios from 'axios';
+import { useSelector}   from 'react-redux';
 const { Header, Content, Sider } = Layout;
 
 
@@ -81,7 +82,8 @@ export default function RootLayout(){
    const submit = useSubmit();
    const navigate = useNavigate();
    const { i18n } = useTranslation();
-   
+   const empNo = useSelector(state => {return state.empNo;});
+   const empName = useSelector(state => {return state.name;});
    const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -166,7 +168,7 @@ export default function RootLayout(){
             padding: '0 24px 24px',
           }}
         >
-         <Watermark content="Ant Design">     
+         <Watermark content= {`${empNo} ${empName}`}>     
           <Content
             style={{
               padding: 24,

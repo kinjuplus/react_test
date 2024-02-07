@@ -1,7 +1,7 @@
 //import  '../pages/Home.css';
 import { Button, Form, Input, Select, AutoComplete, Upload, Spin } from 'antd';
 import { Row, Col } from "antd";
-import { HomeOutlined, AppstoreOutlined, ClearOutlined,InboxOutlined  } from '@ant-design/icons';
+import { HomeOutlined, SearchOutlined, ClearOutlined,InboxOutlined  } from '@ant-design/icons';
 import { useState } from 'react';
 import EmployeePicker from './EmployeePicker';
 import axios from 'axios';
@@ -154,6 +154,11 @@ export default function EventForm({ applicationList, event}){
       return e?.fileList;
     };
 
+    function handleClear(){
+       form.setFieldValue('pm', null);
+       form.setFieldValue('pmEmpNo', null);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         
@@ -248,7 +253,7 @@ export default function EventForm({ applicationList, event}){
                   },
                ]}
                 >
-                <Input.Search  placeholder="PM" onSearch={()=>{ setIsModalOpen(true)}} enterButton/>   
+                <Input  placeholder="PM" suffix={ <>  <Button type="dashed" onClick={handleClear}><ClearOutlined/></Button> <Button type="link" onClick={()=>{ setIsModalOpen(true)}}><SearchOutlined /></Button> </>}/>   
                 </Form.Item>
                 <Form.Item name="pmEmpNo" hidden> 
                     <Input type='hidden' />
@@ -286,12 +291,7 @@ export default function EventForm({ applicationList, event}){
           <Row>
              <Col span={12}>     
              <Form.Item label="Meeting Notes" name="meetingNotes">
-                <Form.Item name="files" valuePropName="fileList" getValueFromEvent={normFile} noStyle rules={[
-                  {
-                    required: true,
-                    message: 'Please upload a file!',
-                  },
-               ]}>
+                <Form.Item name="files" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
                 <Upload.Dragger name="files" customRequest={({ onSuccess }) => onSuccess("ok")}>
                   <p className="ant-upload-drag-icon">
                     <InboxOutlined />
